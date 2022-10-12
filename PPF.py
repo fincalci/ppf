@@ -13,18 +13,18 @@ Years=st.slider('Select Tenure Period in Years',0,60,15)
 Rate=st.slider('Select Rate of Interest', 0.0,10.0,7.1)
 st.write("-----------------------")
 Rate=Rate/100  
-Amount1=m.ceil(Amount *1000*Years)
+#Amount1=m.ceil(Amount *1000*Years)
 Amt=Amount * 1000
 pwr=Amt*(pow((1+Rate),Years)-1)/Rate
 prr=(pwr*Rate)
 #pwr=Amt*(pow(Rate,Years)-1)/Rate
 st.write(prr+pwr)
-TL=m.ceil(Amt*pwr)
+TP=m.ceil(Amt*Years)
 ##TL=m.ceil(Amt * (pow(((1 + Rate / 100), Years)-1)/Rate))
 #st.write(TL)
-I=TL-Amount1
+I=prr+pwr-TP
 li=['Amount','Interest']
-n=[Amount1,I]
+n=[TP,I]
 fig = go.Figure(
         go.Pie(
         labels = li,
@@ -32,5 +32,5 @@ fig = go.Figure(
         hoverinfo = "label+percent",
         textinfo = "value"
         ))  
-st.subheader("Distribution of Payment")
+st.subheader("Distribution of Maturity Amount")
 st.plotly_chart(fig)
