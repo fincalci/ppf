@@ -18,7 +18,7 @@ Amt=Amount * 1000
 pwr=Amt*(pow((1+Rate),Years)-1)/Rate
 prr=(pwr*Rate)
 #pwr=Amt*(pow(Rate,Years)-1)/Rate
-st.write(prr+pwr)
+st.write(m.ceil(prr+pwr))
 TP=m.ceil(Amt*Years)
 ##TL=m.ceil(Amt * (pow(((1 + Rate / 100), Years)-1)/Rate))
 #st.write(TL)
